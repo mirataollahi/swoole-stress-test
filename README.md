@@ -32,6 +32,10 @@ Install the project via Composer:
 ### Run stress test
 
 ```php
+use Craftix\Requester\Config;
+use Craftix\Requester\Requester;
+
+
 $config = Config::create()
     ->setHost('127.0.0.1') // The target host to send requests to (e.g., 'google.com')
     ->setPort(8040) // The target port to use for requests (default is 443 for HTTPS)
