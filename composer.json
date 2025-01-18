@@ -1,0 +1,20 @@
+{
+  "name": "craftix/swoole-requester",
+  "description": "A PHP Swoole package to run HTTP request stress tests.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Amirreza mirataollahi",
+      "email": "amir3672@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-swoole": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Craftix\\Requester\\": "src/"
+    }
+  }
+}

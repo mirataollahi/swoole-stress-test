@@ -1,0 +1,6 @@
+composer.lock
+.idea
+.vscode
+error-log
+example/test.php
+vendor
