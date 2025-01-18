@@ -16,6 +16,41 @@ class Config
     {
         return new self();
     }
+
+    public function loadCliArguments(): void
+    {
+        $arguments = getopt("", ["host:", "port:", "concurrency:"]);
+        $argumentsMap = [
+            'host','port','path','ssl','requestTimeout','concurrency','ssl','requestCount'
+        ];
+        foreach ($argumentsMap as $argumentItem) {
+            if (array_key_exists($argumentItem, $arguments)) {
+                if ($argumentItem == 'ssl') {
+                    $value = $arguments['ssl'];
+                    if (is_numeric($value)) {
+                        $value = (int)$value;
+                        $value > 0 ? $this->enableSsl() : $this->disableSsl();
+                    }
+                    else if (is_string($value)) {
+                        $value = strtolower($value);
+                        if ($value === 'true'){
+                            $this->enableSsl();
+                        }
+                        else if ($value === 'false'){
+                            $this->disableSsl();
+                        }
+                    }
+                }
+                elseif (empty($arguments[$argumentItem])) {
+                    continue;
+                }
+                else if (property_exists($this, $argumentItem)) {
+                    $this->$argumentItem = $arguments[$argumentItem];
+                }
+            }
+        }
+    }
+
     public function getRequestCount(): int
     {
         return $this->requestCount;

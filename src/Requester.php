@@ -31,6 +31,7 @@ class Requester
     public function __construct(Config $config)
     {
         $this->config = $config;
+        $this->config->loadCliArguments();
         $this->logger = new Logger();
         $this->metrics = new Metrics();
         $this->queue = new Channel($this->config->getConcurrency());

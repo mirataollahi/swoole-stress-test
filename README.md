@@ -29,8 +29,9 @@ Install the project via Composer:
 
 ## Usage
 
-### Run stress test
+### Run test with php
 
+#### Create a PHP file named `stress-test.php` and copy the code below:
 ```php
 use Craftix\Requester\Config;
 use Craftix\Requester\Requester;
@@ -52,3 +53,18 @@ $config = Config::create()
 Requester::run($config);
 ```
 
+#### Run php test file 
+```bash
+ php ./stress-test.php
+```
+
+
+
+### Run test with docker
+
+
+#### Run stress test with docker
+```bash
+ docker build -t swoole-requester ./vendor/craftix/
+ docker run swoole-requester
+```
